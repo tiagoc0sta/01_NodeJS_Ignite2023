@@ -9,7 +9,7 @@ import http from 'node:http';
 // GET -> Buscar um recurso no Backend
 // POST-> Criar um recurso no Backend
 // PUT-> Atualizar um recurso no baBackend (atualizar muitos campos ao mesmo tempo)
-// PATCH-> Atualizar um recurso específico no baBackend (atualizar muitos campos ao mesmo tempo)
+// PATCH-> Atualizar um recurso específico no Backend (atualizar muitos campos ao mesmo tempo)
 // DELETE => Deletar um recurso no backend
 
 //Exemplo de rota final (conjunto de metodo HTTP + URL):
@@ -22,6 +22,17 @@ import http from 'node:http';
 //JSON - Javascript Object notation - estrutura de dados para utilizado entre frontend e backend ou entre dois backends
 
 // Cabeçalhos (Requisição/ resposta) = são Metadados
+
+/*HTTP Status code
+Informational responses (100 – 199)
+Successful responses (200 – 299)
+Redirection messages (300 – 399)
+Client error responses (400 – 499)
+Server error responses (500 – 599)*/
+
+// STREAMS
+// Readable streams = enviar dados, fornecer informações
+// Writeble streams
 
 const users = [];
 
@@ -40,10 +51,10 @@ const server = http.createServer((req, res) => {
       email: 'johndoe@gmail.com',
     });
 
-    return res.end('Criação de usuários');
+    return res.writeHead(201).end();
   }
 
-  return res.end('Hello World');
+  return res.writeHead(404).end();
 });
 
 server.listen(3333);
